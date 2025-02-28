@@ -1,0 +1,600 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoShop </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+        body { scroll-behavior: smooth;background: linear-gradient(135deg, #ff9a9e, #fad0c4);}/* Header */
+    header {
+        background-color: #ffffff;
+        padding: 1rem 5%;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .logo { font-size: 1.5rem; font-weight: bold; color: #333; }
+    .logo h5{
+        font-size: 20px; margin-top: 1px; margin-left: 100px; margin-bottom: -20PX;
+        font-family: 'AdineKirnberg-Script';
+    }
+    .nav-links a { margin-left: 1.5rem; text-decoration: none; color: #333; }
+
+    /* Hero Section */
+    .hero {
+        height: 80vh;
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+        url('Frame (70).jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        margin-top: 20px;
+        padding: 100px;
+    }
+    .hero h1 { font-size: 3rem; margin-top: 1rem; }
+    #categories h2{
+        background-color: #ffffff;
+        font-size: 30px;
+    }
+    .shop-now-btn {
+        background: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 25px;
+        color: black;
+        margin-top: 10px;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        width: 200px;
+        transition: transform 0.25s ease;
+        font-style: italic;
+    }
+    .shop-now-btn:hover { 
+        transform: scale(1.05); 
+        background-color: #ffffff;
+        box-shadow: 0 0 20px 5px #ffffff;
+    }
+    .back-button:active {
+            transform: scale(1.1);
+            background-color: #ffffff;
+            
+        }
+
+    /* Categories Section */
+    section { padding: 4rem 5%; text-align: center; }
+    .category-grid { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+        gap: 2rem; 
+        margin-bottom: -50px;
+    }
+    .category-card {
+        margin-top: 20px;
+        cursor: pointer;
+        transition: transform 0.3s;
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .category-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .category-card img { width: 100%; height: 250px; object-fit: cover; }
+
+    /* Frames Gallery */
+    .frames-gallery {
+        display: none;
+        padding: 20px;
+        animation: fadeIn 0.5s ease-out;
+    }
+    .frame-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin: 20px 0;
+    }
+    @media (max-width: 1024px) {
+        .frame-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+        .frame-grid { grid-template-columns: 1fr; }
+    }
+
+    .frame-card {
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.5s ease-out;
+    }
+    .frame-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .frame-info {
+        padding: 15px;
+    }
+    .frame-info h3 {
+        margin: 0 0 10px 0;
+        color: #333;
+    }
+    .frame-info p {
+        margin: 0 0 10px 0;
+        color: #666;
+    }
+    .price {
+        font-weight: bold;
+        color: #007bff;
+        font-size: 1.2rem;
+    }
+    .add-to-cart {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .add-to-cart:hover { background-color: #0056b3; }
+
+    /* Back to Categories Button */
+    .back-to-categories {
+        background-color: #6c757d;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 20px;
+        font-size: 1rem;
+        display: inline-flex;
+        align-items: center;
+    }
+    .back-to-categories i {
+        margin-right: 8px;
+    }
+    .back-to-categories:hover {
+        background-color: #5a6268;
+    }
+
+    /* Contact Form */
+    #contact h2{
+        background-color: rgb(255, 255, 255);
+        margin-bottom:20px;
+        font-size: 30px;
+    }
+    .contact-form {
+        max-width: 600px;
+        margin-top: -50px;
+        margin: 0 auto;
+        background: rgb(185, 180, 180);
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+        font-weight: bold;
+    }
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+    }
+    .form-group textarea {
+        height: 150px;
+        resize: vertical;
+    }
+    .submit-btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .submit-btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Footer */
+    footer { 
+        background-color: #333; 
+        color: white; 
+        padding: 1rem 5%; 
+        margin-top: 1rem; 
+        text-align: center; 
+    }
+    .social-icons a { 
+        color: white; 
+        
+        margin: 0 20px; 
+        font-size: 1.5rem; 
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+        Footer p{
+        margin-top: 5px;
+    }
+    Footer h5{
+        font-size: 30px; margin-top: 1px;text-align: center; margin-bottom: auto;
+        font-family: 'AdineKirnberg-Script';
+    }
+</style>
+
+</head>
+<body>
+    <header>
+        <div class="logo">Photoprime<h5>Gour Sardar</h5></div>
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#categories">Categories</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header><section class="hero" id="home">
+    <h1>Premium Quality Photo Frames</h1>
+    <a href="view.html" class="shop-now-btn">Shop Now</a>
+</section>
+
+<section class="categories" id="categories">
+    <h2>Popular Categories</h2>
+    <div class="category-grid" id="categoryGrid">
+        <div class="category-card" data-category="wooden">
+            <img src="Image/Frame (83).jpg" alt="Wooden Frames">
+            <h3>Wooden Frames</h3>
+        </div>
+        <div class="category-card" data-category="metal">
+            <img src="Image/Frame (84).jpg" alt="Metal Frames">
+            <h3>Metal Frames</h3>
+        </div>
+        <div class="category-card" data-category="digital">
+            <img src="Image/Frame (85).jpg" alt="Digital Frames">
+            <h3>Digital Frames</h3>
+        </div>
+    </div>
+</section>
+
+<!-- Wooden Frames Gallery -->
+<section id="woodenFrames" class="frames-gallery">
+    <button class="back-to-categories"><i class="fas fa-arrow-left"></i> Back to Categories</button>
+    <h2>Wooden Frames Collection</h2>
+    <div class="frame-grid">
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Classic Oak Frame">
+            <div class="frame-info">
+                <h3>Classic Oak Frame</h3>
+                <p class="price">$49.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Rustic Walnut Frame">
+            <div class="frame-info">
+                <h3>Rustic Walnut Frame</h3>
+                <p class="price">$59.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Vintage Mahogany Frame">
+            <div class="frame-info">
+                <h3>Vintage Mahogany Frame</h3>
+                <p class="price">$69.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Modern Pine Frame">
+            <div class="frame-info">
+                <h3>Modern Pine Frame</h3>
+                <p class="price">$39.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Minimalist Bamboo Frame">
+            <div class="frame-info">
+                <h3>Minimalist Bamboo Frame</h3>
+                <p class="price">$44.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Ornate Cherry Wood Frame">
+            <div class="frame-info">
+                <h3>Ornate Cherry Wood Frame</h3>
+                <p class="price">$79.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Antique Teak Frame">
+            <div class="frame-info">
+                <h3>Antique Teak Frame</h3>
+                <p class="price">$89.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Eco-Friendly Reclaimed Wood Frame">
+            <div class="frame-info">
+                <h3>Eco-Friendly Reclaimed Wood Frame</h3>
+                <p class="price">$54.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Metal Frames Gallery -->
+<section id="metalFrames" class="frames-gallery">
+    <button class="back-to-categories"><i class="fas fa-arrow-left"></i> Back to Categories</button>
+    <h2>Metal Frames Collection</h2>
+    <div class="frame-grid">
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Silver Alloy Frame">
+            <div class="frame-info">
+                <h3>Silver Alloy Frame</h3>
+                <p class="price">$59.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Brushed Gold Frame">
+            <div class="frame-info">
+                <h3>Brushed Gold Frame</h3>
+                <p class="price">$69.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Matte Black Aluminum Frame">
+            <div class="frame-info">
+                <h3>Matte Black Aluminum Frame</h3>
+                <p class="price">$54.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Rose Gold Elegant Frame">
+            <div class="frame-info">
+                <h3>Rose Gold Elegant Frame</h3>
+                <p class="price">$79.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Industrial Steel Frame">
+            <div class="frame-info">
+                <h3>Industrial Steel Frame</h3>
+                <p class="price">$49.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Copper Vintage Frame">
+            <div class="frame-info">
+                <h3>Copper Vintage Frame</h3>
+                <p class="price">$64.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Minimalist Chrome Frame">
+            <div class="frame-info">
+                <h3>Minimalist Chrome Frame</h3>
+                <p class="price">$44.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Brass Antique Frame">
+            <div class="frame-info">
+                <h3>Brass Antique Frame</h3>
+                <p class="price">$84.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Digital Frames Gallery -->
+<section id="digitalFrames" class="frames-gallery">
+    <button class="back-to-categories"><i class="fas fa-arrow-left"></i> Back to Categories</button>
+    <h2>Digital Frames Collection</h2>
+    <div class="frame-grid">
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Smart Digital Frame">
+            <div class="frame-info">
+                <h3>Smart Digital Frame</h3>
+                <p class="price">$129.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="WiFi Cloud Frame">
+            <div class="frame-info">
+                <h3>WiFi Cloud Frame</h3>
+                <p class="price">$149.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Touchscreen Photo Frame">
+            <div class="frame-info">
+                <h3>Touchscreen Photo Frame</h3>
+                <p class="price">$179.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="HD Digital Display Frame">
+            <div class="frame-info">
+                <h3>HD Digital Display Frame</h3>
+                <p class="price">$159.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Mini Digital Frame">
+            <div class="frame-info">
+                <h3>Mini Digital Frame</h3>
+                <p class="price">$89.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Digital Slideshow Frame">
+            <div class="frame-info">
+                <h3>Digital Slideshow Frame</h3>
+                <p class="price">$119.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Smart Home Compatible Frame">
+            <div class="frame-info">
+                <h3>Smart Home Compatible Frame</h3>
+                <p class="price">$199.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+        <div class="frame-card">
+            <img src="/api/placeholder/400/300" alt="Video-Capable Digital Frame">
+            <div class="frame-info">
+                <h3>Video-Capable Digital Frame</h3>
+                <p class="price">$169.99</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-form">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your Name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Your Email">
+        </div>
+        <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" placeholder="Subject">
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Your Message"></textarea>
+        </div>
+        <button class="submit-btn">Send Message</button>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 Photoprime. All rights reserved.</p>
+    <h5>Gour Sardar</h5>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+</footer>
+
+<script>
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        // Category click handling
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                document.querySelectorAll('.frames-gallery').forEach(gallery => {
+                    gallery.style.display = 'none';
+                });
+                document.getElementById(`${category}Frames`).style.display = 'block';
+                window.scrollTo({ 
+                    top: document.getElementById(`${category}Frames`).offsetTop - 80, 
+                    behavior: 'smooth' 
+                });
+            });
+        });
+
+        // Back to Categories button functionality
+        document.querySelectorAll('.back-to-categories').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.frames-gallery').forEach(gallery => {
+                    gallery.style.display = 'none';
+                });
+                window.scrollTo({ 
+                    top: document.getElementById('categories').offsetTop - 80, 
+                    behavior: 'smooth' 
+                });
+            });
+        });
+
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const frameName = this.parentElement.querySelector('h3').textContent;
+                const framePrice = this.parentElement.querySelector('.price').textContent;
+                alert(`Added ${frameName} (${framePrice}) to your cart!`);
+            });
+        });
+
+        // Contact form handling
+        document.querySelector('.submit-btn').addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            alert(`Thank you for your message, ${name}! We will get back to you soon.`);
+            
+            // Clear form
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('subject').value = '';
+            document.getElementById('message').value = '';
+        });
+    });
+</script>
+
+</body>
+</html>

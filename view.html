@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoShop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            color: rgb(0, 0, 0);
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+            color: #f4a261;
+        }
+
+        header p {
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
+        /* Sections */
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: -25px 0;
+        }
+
+        h2 {
+            font-size: 28px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            background: #f4a261;
+            color: white;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        /* Frame Styles */
+        .frame-category {
+            margin: 40px 0;
+        }
+
+        .frame-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .frame {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            width: 200px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .frame:hover {
+            transform: scale(1.05);
+        }
+
+        .frame img {
+            width: 100%;
+        }
+
+        .frame p {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 150px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:active {
+            transform: scale(1.1);
+            background-color: #ff9a9e;
+            box-shadow: 0 0 20px 5px #ffffff;
+        }
+
+        /* Modal Styles */
+/* Modified Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow-y: auto; /* Enable vertical scrolling */
+    z-index: 1000;
+}
+
+.modal-content {
+    margin: 20px auto;
+    display: block;
+    max-width: 90%;
+    max-height: calc(100vh - 40px); /* Account for margin */
+    object-fit: contain;
+    animation: zoom 0.3s;
+}
+
+.close {
+    position: fixed;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+@keyframes zoom {
+    from { transform: scale(0) }
+    to { transform: scale(1) }
+}
+
+
+.close:hover {
+    color: #f4a261;
+}
+
+        /* Footer */
+        footer { 
+            background-color: #333; 
+            color: white; 
+            padding: 1rem 5%; 
+            margin-top: 1rem; 
+            text-align: center; 
+        }
+        .social-icons a { 
+            color: white; 
+            margin: 0 20px; 
+            font-size: 1.5rem; 
+        }
+
+        Footer p{
+            margin-top: 5px;
+        }
+        Footer h5{
+            font-size: 30px; 
+            margin-top: 1px;
+            text-align: center; 
+            margin-bottom: auto;
+            font-family: 'AdineKirnberg-Script';
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Styles & Colours</h1>
+        <p>Explore our premium collection of photo frames</p>
+    </header>
+
+    <div class="container">
+        <section class="frame-category">
+            <h2>New Frame</h2>
+            <div class="frame-row">
+                <div class="frame">
+                    <img src="Image/Frame (1).jpg" alt="Black Frame">
+                    <p>Frame (1)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (2).jpg" alt="Black Frame">
+                    <p>Frame (2)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (3).jpg" alt="Black Frame">
+                    <p>Frame (3)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (4).jpg" alt="Black Frame">
+                    <p>Frame (4)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (5).jpg" alt="Black Frame">
+                    <p>Frame (5)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (6).jpg" alt="Black Frame">
+                    <p>Frame (6)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (7).jpg" alt="Black Frame">
+                    <p>Frame (7)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (8).jpg" alt="Black Frame">
+                    <p>Frame (8)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (9).jpg" alt="Black Frame">
+                    <p>Frame (9)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (10).jpg" alt="Black Frame">
+                    <p>Frame (10)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (11).jpg" alt="Black Frame">
+                    <p>Frame (11)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (12).jpg" alt="Black Frame">
+                    <p>Frame (12)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (13).jpg" alt="Black Frame">
+                    <p>Frame (13)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (14).jpg" alt="Black Frame">
+                    <p>Frame (14)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (15).jpg" alt="Black Frame">
+                    <p>Frame (15)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (16).jpg" alt="Black Frame">
+                    <p>Frame (16)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (17).jpg" alt="Black Frame">
+                    <p>Frame (17)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (18).jpg" alt="Black Frame">
+                    <p>Frame (18)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (19).jpg" alt="Black Frame">
+                    <p>Frame (19)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (20).jpg" alt="Black Frame">
+                    <p>Frame (20)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (21).jpg" alt="Black Frame">
+                    <p>Frame (21)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (22).jpg" alt="Black Frame">
+                    <p>Frame (22)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (23).jpg" alt="Black Frame">
+                    <p>Frame (23)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (24).jpg" alt="Black Frame">
+                    <p>Frame (24)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (25).jpg" alt="Black Frame">
+                    <p>Frame (25)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (26).jpg" alt="Black Frame">
+                    <p>Frame (26)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (27).jpg" alt="Black Frame">
+                    <p>Frame (27)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (28).jpg" alt="Black Frame">
+                    <p>Frame (28)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (29).jpg" alt="Black Frame">
+                    <p>Frame (29)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (30).jpg" alt="Black Frame">
+                    <p>Frame (30)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (31).jpg" alt="Black Frame">
+                    <p>Frame (31)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (32).jpg" alt="Black Frame">
+                    <p>Frame (32)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (33).jpg" alt="Black Frame">
+                    <p>Frame (33)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (34).jpg" alt="Black Frame">
+                    <p>Frame (34)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (35).jpg" alt="Black Frame">
+                    <p>Frame (35)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (36).jpg" alt="Black Frame">
+                    <p>Frame (36)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (37).jpg" alt="Black Frame">
+                    <p>Frame (37)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (38).jpg" alt="Black Frame">
+                    <p>Frame (38)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (39).jpg" alt="Black Frame">
+                    <p>Frame (39)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (40).jpg" alt="Black Frame">
+                    <p>Frame (40)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (41).jpg" alt="Black Frame">
+                    <p>Frame (41)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (42).jpg" alt="Black Frame">
+                    <p>Frame (42)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (43).jpg" alt="Black Frame">
+                    <p>Frame (43)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (44).jpg" alt="Black Frame">
+                    <p>Frame (44)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (45).jpg" alt="Black Frame">
+                    <p>Frame (45)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (46).jpg" alt="Black Frame">
+                    <p>Frame (46)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (47).jpg" alt="Black Frame">
+                    <p>Frame (47)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (48).jpg" alt="Black Frame">
+                    <p>Frame (48)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (49).jpg" alt="Black Frame">
+                    <p>Frame (49)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (50).jpg" alt="Black Frame">
+                    <p>Frame (50)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (51).jpg" alt="Black Frame">
+                    <p>Frame (51)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (52).jpg" alt="Black Frame">
+                    <p>Frame (52)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (53).jpg" alt="Black Frame">
+                    <p>Frame (53)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (54).jpg" alt="Black Frame">
+                    <p>Frame (54)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (55).jpg" alt="Black Frame">
+                    <p>Frame (55)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (56).jpg" alt="Black Frame">
+                    <p>Frame (56)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (57).jpg" alt="Black Frame">
+                    <p>Frame (57)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (58).jpg" alt="Black Frame">
+                    <p>Frame (58)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (59).jpg" alt="Black Frame">
+                    <p>Frame (59)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (60).jpg" alt="Black Frame">
+                    <p>Frame (60)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (61).jpg" alt="Black Frame">
+                    <p>Frame (61)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (62).jpg" alt="Black Frame">
+                    <p>Frame (62)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (63).jpg" alt="Black Frame">
+                    <p>Frame (63)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (64).jpg" alt="Black Frame">
+                    <p>Frame (64)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (65).jpg" alt="Black Frame">
+                    <p>Frame (65)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (66).jpg" alt="Black Frame">
+                    <p>Frame (66)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (67).jpg" alt="Black Frame">
+                    <p>Frame (67)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (68).jpg" alt="Black Frame">
+                    <p>Frame (68)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (69).jpg" alt="Black Frame">
+                    <p>Frame (69)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (70).jpg" alt="Black Frame">
+                    <p>Frame (70)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (71).jpg" alt="Black Frame">
+                    <p>Frame (71)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (72).jpg" alt="Black Frame">
+                    <p>Frame (72)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (73).jpg" alt="Black Frame">
+                    <p>Frame (73)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (74).jpg" alt="Black Frame">
+                    <p>Frame (74)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (75).jpg" alt="Black Frame">
+                    <p>Frame (75)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (76).jpg" alt="Black Frame">
+                    <p>Frame (76)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (77).jpg" alt="Black Frame">
+                    <p>Frame (77)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (78).jpg" alt="Black Frame">
+                    <p>Frame (78)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (79).jpg" alt="Black Frame">
+                    <p>Frame (79)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (80).jpg" alt="Black Frame">
+                    <p>Frame (80)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (81).jpg" alt="Black Frame">
+                    <p>Frame (81)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (82).jpg" alt="Black Frame">
+                    <p>Frame (82)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (83).jpg" alt="Black Frame">
+                    <p>Frame (83)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (84).jpg" alt="Black Frame">
+                    <p>Frame (84)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (85).jpg" alt="Black Frame">
+                    <p>Frame (85)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (86).jpg" alt="Black Frame">
+                    <p>Frame (86)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (87).jpg" alt="Black Frame">
+                    <p>Frame (87)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (88).jpg" alt="Black Frame">
+                    <p>Frame (88)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (89).jpg" alt="Black Frame">
+                    <p>Frame (89)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (90).jpg" alt="Black Frame">
+                    <p>Frame (90)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (91).jpg" alt="Black Frame">
+                    <p>Frame (91)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (92).jpg" alt="Black Frame">
+                    <p>Frame (92)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (93).jpg" alt="Black Frame">
+                    <p>Frame (93)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (94).jpg" alt="Black Frame">
+                    <p>Frame (94)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (95).jpg" alt="Black Frame">
+                    <p>Frame (95)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (96).jpg" alt="Black Frame">
+                    <p>Frame (96)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (97).jpg" alt="Black Frame">
+                    <p>Frame (97)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (98).jpg" alt="Black Frame">
+                    <p>Frame (98)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (99).jpg" alt="Black Frame">
+                    <p>Frame (99)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (100).jpg" alt="Black Frame">
+                    <p>Frame (100)</p>
+                </div>
+                <div class="frame">
+                    <img src="Image/Frame (101).jpg" alt="Black Frame">
+                    <p>Frame (101)</p>
+                </div>              
+            </div>
+        </section>
+            <!-- Old Frame Section
+        <section class="frame-category">
+            <h2>Old Frame</h2>
+            <div class="frame-row">
+                <div class="frame">
+                    <img src="images/blue.jpg" alt="Blue Frame">
+                    <p>Blue</p>
+                </div>
+                <div class="frame">
+                    <img src="images/bottle.jpg" alt="Bottle Frame">
+                    <p>Bottle</p>
+                </div>
+                <div class="frame">
+                    <img src="images/bank.jpg" alt="Bank Frame">
+                    <p>Bank</p>
+                </div>
+                <div class="frame">
+                    <img src="images/mobile.jpg" alt="Mobile Frame">
+                    <p>Mobile</p>
+                </div>
+                <div class="frame">
+                    <img src="images/highp.jpg" alt="Highp Frame">
+                    <p>Highp</p>
+                </div>
+                <div class="frame">
+                    <img src="images/kng.jpg" alt="Kng Frame">
+                    <p>Kng</p>
+                </div>                
+                <div class="frame">
+                    <img src="images/brown.jpg" alt="Brown Frame">
+                    <p>Brown</p>
+                </div>
+                <div class="frame">
+                    <img src="images/brown.jpg" alt="Brown Frame">
+                    <p>Brown</p>
+                </div>
+            </div>
+        </section> -->
+    </div>
+    <a href="asfsd.html" class="back-button">Back</a>
+
+    <!-- Image Modal -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="expandedImg">
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Photoprime. All rights reserved.</p>
+        <h5>Gour Sardar</h5>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Image enlargement functionality
+        const modal = document.getElementById("myModal");
+        const modalImg = document.getElementById("expandedImg");
+        const closeBtn = document.getElementsByClassName("close")[0];
+
+        // Add click event to all frame images
+        document.querySelectorAll('.frame img').forEach(img => {
+            img.onclick = function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            }
+        });
+
+        // Close modal
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Close when clicking outside image
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
